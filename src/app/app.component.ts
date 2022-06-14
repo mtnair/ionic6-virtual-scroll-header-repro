@@ -7,7 +7,7 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  virtualScroll = false;
+  virtualScroll = true;
   items = [...Array.from(Array(100).keys())];
 
   constructor(public platform: Platform) {}
