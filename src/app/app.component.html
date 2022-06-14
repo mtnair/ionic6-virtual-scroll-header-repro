@@ -1,0 +1,47 @@
+<ion-app>
+  <ion-header [translucent]="platform.is('ios')" mode="ios">
+    <ion-toolbar [mode]="!platform.is('ios') ? 'md' : undefined">
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Header</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content fullscreen="true" [scrollY]="!virtualScroll">
+    <ion-header collapse="condense" mode="ios">
+      <ion-toolbar [mode]="!platform.is('ios') ? 'md' : undefined">
+        <ion-title size="large">Header</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <cdk-virtual-scroll-viewport *ngIf="virtualScroll"
+      itemSize="56"
+      minBufferPx="900"
+      maxBufferPx="1350"
+      class="ion-content-scroll-host"
+    >
+      <ion-list>
+        <ion-item *cdkVirtualFor="let item of items">
+          <ion-avatar slot="start">
+            <img src="https://loremflickr.com/40/40" />
+          </ion-avatar>
+          <ion-label> {{ item }} </ion-label>
+        </ion-item>
+      </ion-list>
+    </cdk-virtual-scroll-viewport>
+    <ion-list *ngIf="!virtualScroll">
+      <ion-item *ngFor="let item of items">
+        <ion-avatar slot="start">
+          <img src="https://loremflickr.com/40/40" />
+        </ion-avatar>
+        <ion-label> {{ item }} </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-app>
